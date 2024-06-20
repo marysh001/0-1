@@ -1,0 +1,18 @@
+//вариант решения 1
+//функция
+
+SELECT user_id
+FROM orders
+GROUP BY user_id
+HAVING COUNT(order_id) >= 3
+
+ // решение 2
+ // создадим оконную функцию, построенную по принципу
+ 
+SELECT user_id, COUNT(order_id) AS cnt
+FROM orders
+GROUP BY user_id
+
+//А уже к этой оконной функции применим фильтр
+
+cnt >= 3
